@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akhila Poly Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#0a0a0f;
+--primary:#00e5ff;
+--accent:#ff2d78;
+--card:rgba(255,255,255,0.05);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:white;
+scroll-behavior:smooth;
+}
+h1,h2{font-family:'Poppins',sans-serif}
+section{padding:60px 20px}
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(135deg,#00e5ff,#6a00ff);
+animation:gradient 6s infinite alternate;
+}
+@keyframes gradient{
+0%{filter:hue-rotate(0deg)}
+100%{filter:hue-rotate(60deg)}
+}
+.btn{
+padding:12px 24px;
+border-radius:30px;
+background:var(--accent);
+color:white;
+border:none;
+margin-top:20px;
+cursor:pointer;
+}
+.card{
+background:var(--card);
+padding:20px;
+border-radius:16px;
+backdrop-filter:blur(12px);
+margin:10px;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+}
+.doctors{
+display:flex;
+overflow-x:auto;
+gap:10px;
+}
+.doc{
+min-width:250px;
+}
+.status{
+padding:10px 20px;
+border-radius:20px;
+display:inline-block;
+margin-top:10px;
+}
+.open{background:green}
+.closed{background:red}
+.footer{text-align:center;padding:20px;font-size:14px}
+a{color:var(--primary)}
+</style>
+</head>
+<body>
+
+<section class="hero">
+<h1>Akhila Poly Clinic</h1>
+<p>We Care for Your Health</p>
+<button class="btn" onclick="document.getElementById('contact').scrollIntoView()">Book Appointment</button>
+</section>
+
+<section id="timings">
+<h2>Timings</h2>
+<div id="status" class="status"></div>
+<div class="grid">
+<div class="card">Morning: 10:00 AM – 1:00 PM</div>
+<div class="card">Evening: 4:00 PM – 10:00 PM</div>
+</div>
+</section>
+
+<section>
+<h2>Services</h2>
+<div class="grid">
+<div class="card">Obstetrics & Gynaecology</div>
+<div class="card">General Medicine</div>
+<div class="card">Pulmonology</div>
+<div class="card">Paediatrics</div>
+<div class="card">Pharmacy</div>
+</div>
+</section>
+
+<section>
+<h2>Doctors</h2>
+<div class="doctors">
+<div class="card doc">Dr. M. Balasaraswathi<br>MS OBG</div>
+<div class="card doc">Dr. Mallikarjun Dindu<br>Respiratory</div>
+<div class="card doc">Dr. Tirupathi<br>Paediatrics</div>
+<div class="card doc">Dr. Purushotham Raju<br>Paediatrics</div>
+<div class="card doc">Dr. Vivek<br>General Medicine</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p>
+<a href="tel:9100064929">Call 1</a><br>
+<a href="tel:9849144929">Call 2</a><br>
+<a href="tel:7997899305">Call 3</a>
+</p>
+<iframe src="https://maps.google.com/maps?q=Hayathnagar&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="200"></iframe>
+</section>
+
+<div class="footer">
+Akhila Poly Clinic © 2026
+</div>
+
+<script>
+function checkStatus(){
+let now=new Date();
+let h=now.getHours();
+let m=now.getMinutes();
+let time=h*60+m;
+let open=(time>=600&&time<=780)||(time>=960&&time<=1320);
+let status=document.getElementById('status');
+status.textContent=open?"OPEN NOW":"CLOSED";
+status.className='status '+(open?'open':'closed');
+}
+checkStatus();
+</script>
+
+</body>
+</html>
